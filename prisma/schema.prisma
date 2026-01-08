@@ -1,0 +1,17 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model Issue {
+  id          Int       @id               @default(autoincrement())
+  title       String?   @db.VarChar(255)
+  description String?   @db.Text
+  status      String?   @db.VarChar(255)  @default("open")
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @updatedAt
+}
